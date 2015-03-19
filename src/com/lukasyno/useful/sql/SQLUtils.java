@@ -1,6 +1,7 @@
 package com.lukasyno.useful.sql;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -89,12 +90,20 @@ public class SQLUtils {
 		}
 	}
 
-	public boolean SaveRecord(String question, String answer) {
+	//TODO:
+	
+	
+	
+	public boolean saveNote(String content, String tag, GregorianCalendar date) {
 		try {
 			ContentValues cv = new ContentValues();
+			//NOTE schema:
+			//id, content, tag, date
 			cv.put("ID", ++ID);
-			cv.put("PYTANIE", question);
-			cv.put("ODPOWIEDZ", answer);
+			cv.put("PYTANIE", content);
+			cv.put("ODPOWIEDZ", tag);
+			cv.put("date", date.toString());
+			
 
 			mDb.insert("SIECI", null, cv);
 
